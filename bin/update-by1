@@ -1,0 +1,21 @@
+DATA=$(apt-get upgrade -s -y -q | grep "Inst " | cut -d ' ' -f 2)
+
+PACKAGES=(${DATA// / })
+Z=0
+
+for package in "${PACKAGES[@]}";
+do
+    echo ""
+    echo ""
+    echo "apt-get install -y -q $package"
+    bash -c "nice apt-get install -y -q $package"
+    bash -c "nice apt-get clean -y -q"
+
+    Z=$((Z+1))
+
+    # update only first 250 packages, just to be sure that we won't kill pi by running this script
+    if [[ $Z -eq 250 ]];
+    then
+        break
+    fi
+done

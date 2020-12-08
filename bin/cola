@@ -1,1 +1,12 @@
-./uhubctl -l 1-1.3 -p 3 -a 1 && sleep 1 && ./uhubctl -l 1-1.3 -p 3 -a 0
+#!/bin/bash
+function oneSec {
+	port=$1
+	../uhubctl/uhubctl -l 1-1.3 -p $port -a 1
+	sleep 1
+	../uhubctl/uhubctl -l 1-1.3 -p $port -a 0
+}
+
+oneSec 1
+oneSec 2
+oneSec 3
+oneSec 4
