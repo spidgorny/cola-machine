@@ -14,7 +14,7 @@ def hello_world():
 @app.route('/cola/<int:seconds>')
 def cola(seconds):
     # run motor  for 5 seconds
-    motorOn(1, seconds)
+    motorOn(4, seconds)
     return 'Cola for ' + str(seconds) + ' ready'
 
 
@@ -33,7 +33,7 @@ def sprite(seconds):
 def motorOn(motorID, seconds):
     os.system('uhubctl/uhubctl -l 1-1.2 -p ' + str(motorID) + ' -a 1')
     time.sleep(seconds)
-    os.system('uhubctl/uhubctl -l 1-1.2 -p ' + str(motorID) + ' -a 1')
+    os.system('uhubctl/uhubctl -l 1-1.2 -p ' + str(motorID) + ' -a 0')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
