@@ -6,6 +6,7 @@
   "author": "DEPIDSVY <depidsvy@nintendo.de>",
   "license": "MIT",
   "dependencies": {
+    "particles.js": "^2.0.0",
     "tailwindcss": "^2.0.2"
   }
 }

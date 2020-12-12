@@ -11,23 +11,31 @@
             height: 100vh;
         }
     </style>
+    <link rel="stylesheet" href="static/particles.css"/>
 </head>
-<body class="container mx-auto p-4 h-full">
-<div class="flex flex-col justify-center h-full">
-    <a href="/home">
-        <img src="static/images/sayhello.jpg"/>
-    </a>
-    <p class="text-3xl text-white pt-6">
-        for:Lesik
-    </p>
-    <p class="text-3xl text-white pt-6">
-        from:Stefan
-    </p>
-    <script>
-        setTimeout(() => {
-            document.location = '/home';
-        }, 5000);
-    </script>
+<body>
+<div  id="particles-js"></div>
+<div class="container mx-auto p-4 h-screen" style="z-index: 2">
+    <div class="flex flex-col justify-center h-full">
+        <div>
+        <a href="/home">
+            <h1 class="text-4xl text-white">Say Hello to the Coca-Machine App</h1>
+        </a>
+        <p class="text-1xl text-white pt-6">
+            for:Lesik
+        </p>
+        <p class="text-1xl text-white pt-6">
+            from:Stefan
+        </p>
+            </div>
+    </div>
 </div>
+<script src="static/particles.js"></script>
+<script src="static/snow.js"></script>
+<script>
+    setTimeout(() => {
+        {#document.location = '/home';#}
+    }, 15000);
+</script>
 </body>
 </html>
