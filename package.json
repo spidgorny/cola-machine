@@ -1,0 +1,12 @@
+{
+  "name": "cola-machine",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "http://github.com/spidgorny/cola-machine",
+  "author": "DEPIDSVY <depidsvy@nintendo.de>",
+  "license": "MIT",
+  "dependencies": {
+    "particles.js": "^2.0.0",
+    "tailwindcss": "^2.0.2"
+  }
+}
