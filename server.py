@@ -7,6 +7,11 @@ app.config['DEBUG'] = True
 
 
 @app.route('/')
+def index():
+    return render_template('index.html')
+
+
+@app.route('/home')
 def hello_world():
     return render_template('home.html')
 
@@ -16,9 +21,9 @@ def dev():
     return render_template('dev.html')
 
 
-@app.route('/drink/<int:id>')
-def drink(id):
-    return render_template('drink.html')
+@app.route('/drink/<string:drink>')
+def drink(drink):
+    return render_template('drink.html', drink=drink)
 
 
 @app.route('/cola/<int:seconds>')
