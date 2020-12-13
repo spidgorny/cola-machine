@@ -1,6 +1,8 @@
 from flask import Flask, redirect, render_template, url_for
 import os
 import time
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -29,7 +31,8 @@ def drink(drink):
 @app.route('/cola/<int:seconds>')
 def cola(seconds):
     # run motor  for 5 seconds
-    motorOn(1, seconds)
+    port = os.getenv('USB_PORT1')
+    motorOn(port, seconds)
     # return 'Cola for ' + str(seconds) + ' ready'
     return redirect(url_for('hello_world'))
 
@@ -37,7 +40,8 @@ def cola(seconds):
 @app.route('/fanta/<int:seconds>')
 def fanta(seconds):
     # run motor 2 for 5 seconds
-    motorOn(2, seconds)
+    port = os.getenv('USB_PORT2')
+    motorOn(port, seconds)
     # return 'Fanta ready for ' + str(seconds)
     return redirect(url_for('hello_world'))
 
@@ -45,15 +49,17 @@ def fanta(seconds):
 @app.route('/sprite/<int:seconds>')
 def sprite(seconds):
     # run motor 3 for 5 seconds
-    motorOn(3, seconds)
+    port = os.getenv('USB_PORT3')
+    motorOn(port, seconds)
     # return 'Fanta ready for ' + str(seconds)
     return redirect(url_for('hello_world'))
 
 
 def motorOn(motorID, seconds):
-    os.system('uhubctl/uhubctl -l 1-1.2 -p ' + str(motorID) + ' -a 1')
+    hub = os.getenv('USB_HUB')
+    os.system('uhubctl/uhubctl -l ' + hub + ' -p ' + str(motorID) + ' -a 1')
     time.sleep(seconds)
-    os.system('uhubctl/uhubctl -l 1-1.2 -p ' + str(motorID) + ' -a 1')
+    os.system('uhubctl/uhubctl -l ' + hub + ' -p ' + str(motorID) + ' -a 1')
 
 
 if __name__ == '__main__':

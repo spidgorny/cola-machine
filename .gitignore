@@ -1,3 +1,4 @@
 uhubctl/
 node_modules/
 .idea/
+.env
