@@ -59,7 +59,7 @@ def motorOn(motorID, seconds):
     hub = os.getenv('USB_HUB')
     os.system('uhubctl/uhubctl -l ' + hub + ' -p ' + str(motorID) + ' -a 1')
     time.sleep(seconds)
-    os.system('uhubctl/uhubctl -l ' + hub + ' -p ' + str(motorID) + ' -a 1')
+    os.system('uhubctl/uhubctl -l ' + hub + ' -p ' + str(motorID) + ' -a 0')
 
 
 if __name__ == '__main__':
